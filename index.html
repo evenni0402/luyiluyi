@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hello</title>
+<style>
+  body {
+    font-family: voltergoldfish, sans-serif;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  #textContainer {
+    margin-top: 200px;
+    font-size: 24px;
+  }
+  #imageContainer {
+    margin-top: 20px;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+</style>
+</head>
+<body>
+
+<div id="textContainer" title="我是一名赛博格，你可以通过最新的科技进入我的意识"></div>
+
+<a href="198.html" target="_blank">
+<div id="imageContainer">
+  <img id="myImage" src="" alt="Image">
+</div></a>
+
+<script>
+  const text = "I'm a Cyborg ,you can access my mind with the latest technology"; // 要显示的文本
+  let index = 0; // 当前文本的索引
+
+  function showText() {
+    const textContainer = document.getElementById("textContainer");
+    textContainer.textContent += text[index]; // 逐字显示文本
+    index++;
+    if (index < text.length) {
+      setTimeout(showText, 100); // 递归调用自身以实现一个字一个字显示文本
+    } else {
+      showImage(); // 文本显示完成后显示图片
+    }
+  }
+
+  function showImage() {
+    const image = document.getElementById("myImage");
+    image.src = "卫星.png"; // 替换为你想要显示的图片链接
+  }
+
+  showText(); // 开始显示文本
+
+</script>
+<style>@font-face {
+    font-family: voltergoldfish;
+    src: url(voltergoldfish.ttf);
+}
+h1{font-family:voltergoldfish ;}
+</style>
+</body>
+</html>

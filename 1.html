@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title></title>
+<script>
+  window.onload = function() {
+      alert("level-1 这里是数据包传递的地方");
+  };
+</script>
+<style>
+  /* 定义关键帧动画 */
+  @keyframes scrollRight {
+    0% { transform: translate(1670px, -200px); } /* 初始位置 */
+   50%{ transform: translate(770px, 330px); } 
+    100% { transform: translate(-200px, 860px); } /* 结束位置 */
+  }
+
+  @keyframes scrollLeft {
+    0% { transform: translate(-200px, -25px); } /* 初始位置 */
+    53%{ transform: translate(825px, 114px); } 
+    75%{ transform: translate(1235px, 264px); } 
+    100% { transform: translate(1670px, 354px); } /* 结束位置 */
+  }
+
+  @keyframes scrollDown {
+    0% { transform: translate(-205px, 600px); } /* 初始位置 */
+    100% { transform: translate(1670px, 780px); } /* 结束位置 */
+  }
+
+  @keyframes scrollUp {
+    0% { transform: translate(-200px, 325px); } /* 初始位置 */
+    49%{ transform: translate(725px, 390px); } 
+    100% { transform: translate(1670px, 560px); } /* 结束位置 */
+  }
+
+  @keyframes luyi {
+    0% { transform: translate(-200px, 375px); } /* 初始位置 */
+    49%{ transform: translate(725px, 420px); } 
+    75.5%{ transform: translate(1197.5px, 535px); } 
+    100% { transform: translate(1670px, 630px); } /* 结束位置 */
+  }
+
+  @keyframes xiuxiu {
+    0% { transform: translate(1670px, 166px); } /* 初始位置 */
+    
+    100% { transform: translate(0px, 900px); } /* 结束位置 */
+  }
+
+
+  /* 设置图片样式 */
+  .image-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden; /* 隐藏超出容器的部分 */
+  }
+
+  #image1 {
+    position: absolute;
+    width: 60px; /* 图片宽度 */
+    height: 60px; /* 图片高度 */
+    animation-duration: 10s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+  }
+
+  #image2 {
+    position: absolute;
+    width: 3%;
+    animation-duration: 16s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+  }
+
+#image3 {
+    position: absolute;
+    width: 60px; /* 图片宽度 */
+    height: 60px; /* 图片高度 */
+    animation-duration: 14s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+  }
+
+  #image4 {
+    position: absolute;
+    width: 60px; /* 图片宽度 */
+    height: 60px; /* 图片高度 */
+    animation-duration: 8s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+  }
+
+  #image5 {
+    position: absolute;
+    width: 60px; /* 图片宽度 */
+    height: 60px; /* 图片高度 */
+    animation-duration: 6s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+    z-index: 5;
+  }
+
+  #image6 {
+    position: absolute;
+    width: 60px; /* 图片宽度 */
+    height: 60px; /* 图片高度 */
+    animation-duration: 9s; /* 动画持续时间 */
+    animation-timing-function: linear; /* 动画时间函数 */
+    animation-iteration-count: infinite; /* 无限循环播放 */
+  }
+
+  /* 每张图片使用不同的关键帧动画 */
+  #image1 { animation-name: scrollRight; }
+  #image2 { animation-name: scrollLeft; }
+  #image3 { animation-name: scrollDown; }
+  #image4 { animation-name: scrollUp; }
+  #image5 { animation-name: luyi; }
+  #image6 { animation-name: xiuxiu; }
+</style>
+</head>
+<body>
+    <img style="position: absolute;top: -4%;left: 0%;" width="100%" src="信号塔.png" alt="">
+    <img style="position: absolute;top: 0%;left: 0%;z-index: -2;width: 100%;" width="100%" src="壁纸.png" alt="">
+
+
+    <input style="position: absolute;left: 0px;z-index: 5;width: 10%;" type="text" id="textInput" placeholder="Enter text here">
+   
+
+
+<!-- 图片容器 -->
+<div class="image-container">
+  <!-- 图片1 -->
+  <button  onclick="openPopup('a.html')"><img id="image1" src="文件夹.png" alt="Image 1"></button>
+  <!-- 图片2 -->
+  
+  <a href="Hollowkght_End.obj" download="Hollowkght_End.obj">
+   
+    <img id="image2" src="文件夹.png" alt="Image 2">
+</a>
+  <!-- 图片3 -->
+  <a href="清明节（放假）快乐.docx" download="清明节（放假）快乐.docx">
+   
+    <img id="image3" src="文件夹.png" alt="Image 3">
+</a>
+<a href="黑洞.gif" download="黑洞.gif">
+   
+  <img id="image4" src="文件夹.png" alt="Image 4">
+</a>
+  <!-- 图片4 -->
+  
+ <button style="color: #cbf7ff;border: 0cap;" onclick="showText()"><img id="image5" src="文件夹.png" alt="Image 5"></button>
+ 
+
+  <img id="image6" src="文件夹.png" alt="Image 6">
+</div>
+<script>
+  function showText() {
+      const textInput = document.getElementById('textInput').value;
+      alert(textInput);
+  }
+  </script>
+<script>
+  function openPopup(url) {
+      // 设置弹出窗口的尺寸和位置
+      var popupWidth = 300;
+      var popupHeight = 200;
+      var left = (window.innerWidth - popupWidth) / 2;
+      var top = (window.innerHeight - popupHeight) / 2;
+      
+      // 打开一个新的弹出窗口
+      window.open(url, 'popupWindow', 'width=' + popupWidth + ', height=' + popupHeight + ', left=' + left + ', top=' + top);
+  }
+  </script>
+</body>
+</html>

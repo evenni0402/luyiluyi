@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Image Explosion</title>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #f0f0f0;
+    }
+
+    #imageUpload {
+        margin: 20px;
+    }
+
+    .fragment {
+        position: absolute;
+        animation: fall 5s linear forwards;
+    }
+
+    @keyframes fall {
+        0% {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        100% {
+            transform: translateY(100vh);
+            opacity: 0;
+        }
+    }
+</style>
+</head>
+<body>
+<input type="file" id="imageUpload" accept="image/*">
+
+<script>
+document.getElementById('imageUpload').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (file) {
+        const reader = new FileReader();
+
+        reader.onload = function(event) {
+            const img = new Image();
+            img.src = event.target.result;
+            img.onload = function() {
+                explodeImage(img);
+            }
+        }
+
+        reader.readAsDataURL(file);
+    }
+});
+
+function explodeImage(image) {
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    const numberOfFragments = 200;
+
+    for (let i = 0; i < numberOfFragments; i++) {
+        const fragment = document.createElement('img');
+        fragment.src = image.src;
+        fragment.classList.add('fragment');
+        fragment.style.width = '50px'; // 调整碎片大小
+        fragment.style.height = 'auto'; // 根据宽度调整高度
+        fragment.style.left = Math.random() * width + 'px';
+        fragment.style.top = Math.random() * height + 'px';
+        document.body.appendChild(fragment);
+    }
+}
+</script>
+<h1 style="position: absolute;top: 46%;left: 31%;" title="它们也会分裂成很多个">They may become many small ones</h1>
+<style>@font-face {
+  font-family: voltergoldfish;
+  src: url(voltergoldfish.ttf);
+}
+h1{font-family:voltergoldfish ;}
+</style>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>异性原型</title>
+<script>
+  window.onload = function() {
+      alert("level-3");
+  };
+</script>
+<style>
+ #blackHole {
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    z-index: 100; /* 确保黑洞在其他内容的下面 */
+    display: none; /* 初始隐藏黑洞 */
+  }
+.image-container img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  .image-container:hover img {
+    opacity: 1;
+  }
+
+    body {
+        margin: 0;overflow-x: hidden;
+       
+    }
+    .random-text {
+        position: absolute; /* 绝对定位，使文字能够在页面上任意位置出现 */
+        color: #307fff; /* 文字颜色 */
+        font-size: 24px; /* 文字大小 */
+        font-family: voltergoldfish;
+        
+    }
+    
+    
+    .mouse-trail {
+        position: absolute;
+        pointer-events: none;
+        transition: opacity 1s, transform 1s;
+    }
+</style>
+</head>
+<body>
+    <img  style="width: 100%;" src="雪山.png" alt="">
+   
+    <div class="image-container"> 
+        <img  style="position: absolute;top: 6%;left: 46.5%;"width="22%" src="眼珠子1.png" alt="" title="这里四处都是水银一般流动的躯体There are bodies floating around like mercury"> 
+        
+        </div>
+        <div class="image-container"> 
+            <img  style="position: absolute;top: 65.4%;left: 78.2%;"width="19%" src="眼珠子3.png" alt="" title="这里是你们集体无意识的部分This is the part of your collective unconscious">
+            </div>
+            <div class="image-container"> 
+                <img  style="position: absolute;top: 138.1%;left: 52.2%;"width="23%" src="眼珠子2.png" alt="" title="">
+                </div>
+                <div class="image-container"> 
+                    <img  style="position: absolute;top: 221%;left: 42.2%;"width="19%" src="眼珠子4.png" alt="">
+                    </div>
+                    <div class="image-container"> 
+                        <img  style="position: absolute;top: 293.2%;left: 73.2%;"width="23%" src="光盘.png" alt="" title="我意识的最底层会是什么？What would be the lowest level of my consciousness">
+                        </div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const numImages = 10; // 图片数量
+        const images = []; // 存储所有图片元素
+
+        // 创建图片元素
+        for (let i = 0; i < numImages; i++) {
+            const img = document.createElement('img');
+            img.src = '水银2.gif'; // 替换成你的图片 URL
+            img.classList.add('mouse-trail');
+            document.body.appendChild(img);
+            images.push(img);
+        }
+
+        // 当鼠标移动时触发效果
+        document.addEventListener('mousemove', function(event) {
+            const mouseX = event.clientX;
+            const mouseY = event.clientY;
+
+            // 更新图片位置
+            for (let i = 0; i < numImages; i++) {
+                const img = images[i];
+                const delay = Math.random() * 100000; // 随机延迟时间
+                const offsetX = Math.random() * 1000- 0; // 随机水平偏移
+                const offsetY = Math.random() * 2400- 0 ; // 随机垂直偏移
+                
+
+                // 设置图片的位置和透明度
+                img.style.left = offsetX + 'px';
+                img.style.top = offsetY + 'px';
+                img.style.opacity = 0.5;
+                img.width = 1000%
+                
+
+                // 使用定时器逐渐隐藏图片
+                setTimeout(() => {
+                    img.style.opacity = 0;
+                }, delay);
+            }
+        });
+    });
+</script>
+
+<div id="blackHole"></div>
+
+<script>
+  const blackHole = document.getElementById("blackHole");
+
+  window.addEventListener("scroll", () => {
+    const scrollPosition = window.scrollY;
+    const triggerPosition = 3400; // 触发黑洞的滚动位置
+
+    if (scrollPosition >= triggerPosition) {
+      blackHole.style.display = "block"; // 显示黑洞
+      setTimeout(() => {
+        window.location.href = "终点.html"; // 替换为你想要重定向到的网页链接
+      }, 2000); // 2秒后重定向
+    }
+  });
+</script>
+<script>
+  // 创建一个数组来存储要显示的文字
+  var texts = ['Anima', 'Animus', ];
+
+  // 创建函数来生成随机位置的文字
+  function createRandomText() {
+      // 从数组中随机选择一个文字
+      var text = texts[Math.floor(Math.random() * texts.length)];
+      
+      // 设置页面的左右边界和上下边界
+      var leftBoundary = 0;
+      var rightBoundary = window.innerWidth - 100; // 100 是文字宽度的估计值
+      var topBoundary = 0;
+      var bottomBoundary = 4400; // 30 是文字高度的估计值
+
+      // 创建一个 <span> 元素来显示文字
+      var randomText = document.createElement('span');
+      randomText.className = 'random-text'; // 添加类名
+      randomText.style.left = Math.random() * (rightBoundary - leftBoundary) + leftBoundary + 'px'; // 随机水平位置
+      randomText.style.top = Math.random() * (bottomBoundary - topBoundary) + topBoundary + 'px'; // 随机垂直位置
+      randomText.innerHTML = text; // 设置文字内容
+      document.body.appendChild(randomText); // 添加到页面中
+
+      // 通过定时器在5秒后删除文字元素
+      setTimeout(function() {
+          randomText.remove();
+      }, 5000);
+  }
+
+  // 使用定时器每隔一段时间创建一个文字元素
+  setInterval(createRandomText, 90); // 这里的时间间隔可以根据需要调整
+</script>
+<style>@font-face {
+  font-family: voltergoldfish;
+  src: url(voltergoldfish.ttf);
+}
+h1{font-family:voltergoldfish ;}
+</style>
+</body>
+</html>

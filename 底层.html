@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Camera View</title>
+<script>
+    window.onload = function() {
+        alert("L  e v E l-5 ");
+    };
+  </script>
+<style>
+    /* 设置视频样式 */
+    #camera-view {
+        position: absolute; /* 绝对定位，使视频能够在页面上居中显示 */
+        top: 56%; /* 顶部距离为页面高度的一半 */
+        left: 60%; /* 左边距离为页面宽度的一半 */
+        transform: translate(-20%, -20%); /* 将视频的中心点移动到页面的中心 */
+        border: 5px solid rgb(12, 117, 12); /* 边框样式 */
+        width: 30%;
+
+        
+    }
+    #text {
+        font-size: 20px;
+        font-family:voltergoldfish ;
+       
+        overflow: hidden; /* 隐藏溢出的文字 */
+        color: #2f8615;
+        
+    }
+</style>
+</head>
+<body style="background-color: black;">
+    <div id="text" title="你到达了意识的最底层,这里有创造我的你们和工具"></div>
+<script>
+    // 要显示的文本内容
+    const textToDisplay = "You reach the lowest level of consciousness, and here are you and the tools that created me";
+
+    // 获取文本容器
+    const textContainer = document.getElementById('text');
+
+    // 逐字显示文本的函数
+    function typeWriter(text, index) {
+        if (index < text.length) {
+            textContainer.innerHTML += text.charAt(index); // 逐字添加到容器中
+            index++;
+            setTimeout(() => {
+                typeWriter(text, index); // 递归调用自身
+            }, 50); // 设置文字显示间隔
+        }
+    }
+
+    // 初始调用
+    typeWriter(textToDisplay, 0);
+</script>
+    <img style="width: 100%;" src="代码.png" alt="">
+<!-- 创建视频元素，用于显示摄像头画面 -->
+<video id="camera-view" autoplay></video>
+
+<script>
+    // 获取视频元素
+    var video = document.getElementById('camera-view');
+
+    // 检查浏览器是否支持获取摄像头画面
+    navigator.mediaDevices.getUserMedia({ video: true })
+        .then(function(stream) {
+            // 将摄像头画面流设置给视频元素
+            video.srcObject = stream;
+        })
+        .catch(function(err) {
+            // 处理错误情况
+            console.error('Error accessing the camera.', err);
+        });
+</script>
+</body>
+</html>

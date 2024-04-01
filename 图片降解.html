@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  #imageContainer {
+    position: absolute;top: 20px;
+    width: 100vw;
+    height: 100vh;
+  }
+  .uploadedImage {
+    position: absolute;
+    display: none;
+    z-index: -100;
+  }
+</style>
+</head>
+<body style="background-color: rgb(240, 240, 240);">
+<input style="z-index: 10;color: #000;border: 0cap;position: absolute;top: 20px;left: 20px; ;" type="file" id="fileInput" accept="image/*">
+<div id="imageContainer"></div>
+
+<script>
+  const imageContainer = document.getElementById('imageContainer');
+  const fileInput = document.getElementById('fileInput');
+
+  fileInput.addEventListener('change', function(event) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const img = new Image();
+        img.onload = function() {
+          const uploadedImage = document.createElement('img');
+          uploadedImage.src = e.target.result;
+          uploadedImage.classList.add('uploadedImage');
+          imageContainer.appendChild(uploadedImage);
+          animateImage(uploadedImage);
+        }
+        img.src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    }
+  });
+
+  function animateImage(img) {
+    const maxWidth = window.innerWidth - img.width;
+    const maxHeight = window.innerHeight - img.height;
+    const randomX = Math.floor(Math.random() * maxWidth);
+    const randomY = Math.floor(Math.random() * maxHeight);
+    img.style.left = `${randomX}px`;
+    img.style.top = `${randomY}px`;
+    img.style.display = 'block';
+
+    let blurAmount = 0;
+    const blurInterval = setInterval(function() {
+      img.style.filter = `blur(${blurAmount}px)`;
+      blurAmount += 0.5;
+      if (blurAmount > 2000) {
+        clearInterval(blurInterval);
+        img.style.display = 'none';
+        img.parentNode.removeChild(img);
+      }
+    }, 100);
+  }
+</script>
+<h1 style="position: absolute;top: 44%;left: 37%;text-align: center;" title="图片被降解了，就像许多事物">Pictures degrade here <br>like most things</h1>
+<style>@font-face {
+  font-family: voltergoldfish;
+  src: url(voltergoldfish.ttf);
+}
+h1{font-family:voltergoldfish ;}
+</style>
+</body>
+</html>
